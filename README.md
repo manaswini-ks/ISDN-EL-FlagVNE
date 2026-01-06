@@ -122,20 +122,6 @@ For topology in [geant, wx100]:
            bash run_overall_performance.sh
 ```
 
-### Ablation Study
-
-shell script: `run_ablation_study.sh`
-
-Run the experiments of the ablation study by the following procedure:
-
-```
-For topology in [geant, wx100]:
-    For solver_name in [flag_vne, flag_vne_meta_free_single_policy, flag_vne_meta_free_multi_policy, flag_vne_meta_policy, flag_vne_no_curriculum, flag_vne_unidirectional_action]:
-        1. Set the solver name to $solver_name in run_exp.sh
-        2. Set the topology to one of the following options: ['geant', 'wx100']
-        3. Run the code with the following command:
-          bash run_exp.sh
-```
 
 ### Learning Curve
 
@@ -153,23 +139,6 @@ For topology in [geant, wx100]:
            bash run_ablation_study.sh
 ```
 
-### Adaption to Unseen Size
-
-shell script: `run_adaptation.sh`
-
-Run the experiments of the adaption to unseen size by the following procedure:
-
-```
-For topology in [geant, wx100]:
-    For solver_name in [flag_vne, flag_vne_meta_free_single_policy, flag_vne_meta_free_multi_policy, flag_vne_meta_policy, flag_vne_no_curriculum, flag_vne_unidirectional_action]:
-        1. Set the solver name to $solver_name in run_adaptation.sh
-        2. Set the topology to one of the following options: ['geant', 'wx100']
-        3. Set the pre-trained model path to the path of the model trained on the training set with the same topology
-        4. Set the unseen size to 12
-        5. Run the code with the following command:
-           bash run_adaptation.sh
-```
-
 ### Scalability Validation
 
 shell script: `run_scalability_validation.sh`
@@ -185,18 +154,3 @@ For topology in [geant, wx100]:
           bash run_scalability_validation.sh
 ```
 
-### Hyperparameter Sensitive Study
-
-shell script: `run_hyperparameter_sensitive_study.sh`
-
-Run the experiments of the hyperparameter sensitive study by the following procedure:
-
-```
-For topology in [geant, wx100]:
-    For solver_name in [flag_vne]:
-        1. Set the solver name to $solver_name in run_hyperparameter_sensitive_study.sh
-        2. Set the topology to one of the following options: ['geant', 'wx100']
-        2. Set the policy_entropy_threshold to one of the following options: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
-        3. Run the code with the following command:
-          bash run_hyperparameter_sensitive_study.sh
-```
