@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # ================== Solver List ================== #
 # Our Algorithms: [flag_vne]
 # Heuristic Baselines: [nrm_rank, nea_rank, pso]
@@ -5,20 +7,22 @@
 # A3C-GCN Variants: [a3c_gcn_nrm, a3c_gcn_nea, a3c_gcn_multi_policies]
 # ================== 1. Key Settings ================== #
 solver_name="flag_vne"             # Solver name. Options: SOLVER_LIST
-topology="wx100"                   # Topology name. Options: [geant, wx100]
-num_train_epochs=100               # Number of training epochs. Options: [0, >0]. If 0, then inference only.
-use_pretrained_model=0
+topology="geant"                   # Topology name. Options: [geant, wx100]
+num_train_epochs=0               # Number of training epochs. Options: [0, >0]. If 0, then inference only.
+use_pretrained_model=1
 num_meta_learning_epochs=0       # Number of meta learning epochs. Only work for FlagVNE and its variants.
 # ================ 3. Other Settings ================ #
 cuda_device=0                      # Cuda device id
-batch_size=128                     # Batch size
+batch_size=64                      # Batch size
 # ===================================================== #
 identifier="-train_epochs_$num_train_epochs-meta_learning_epochs_$num_meta_learning_epochs-batch_size_$batch_size"
 
 # set pretrained model path for testing
 declare -A pretrained_model_path_dict_for_geant
 declare -A pretrained_model_path_dict_for_wx100
-pretrained_model_path_dict_for_geant["SOLVE_NAME"]="PERTRAINED_MODEL_PATH"
+# pretrained_model_path_dict_for_geant["FLAG_VNE"]="/app/save/flag_vne/547fb07c6fcf-20251218T160707/model/model-19.pkl" //replace with path
+# pretrained_model_path_dict_for_geant["flag_vne"]="/app/save/flag_vne/547fb07c6fcf-20251218T160707/model/model-19.pkl"  # replace with path
+pretrained_model_path_dict_for_geant["flag_vne"]="/app/save_live_backup_final/flag_vne/547fb07c6fcf-20251218T160707/model/model-19.pkl"
 pretrained_model_path_dict_for_wx100["SOLVE_NAME"]="PERTRAINED_MODEL_PATH"
 
 if [ $topology == "geant" -a $use_pretrained_model == 1 ]; then
